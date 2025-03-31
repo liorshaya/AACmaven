@@ -6,10 +6,15 @@ import java.util.Random;
 
 public class Threads {
     public static void main(String[] args) {
-        String[] users = createUsers();
         Random rnd = new Random();
+        String[] users = createUsers();
+        while(true){
+            String user = users[rnd.nextInt(users.length)];
+            System.out.print(user + ": ");
+            chat();
+            System.out.println();
+        }
     }
-
 
     public static String[] createUsers(){
         Faker faker = new Faker();
@@ -20,19 +25,28 @@ public class Threads {
         return user;
     }
 
-    public static void chat(String[] name){
+    public static void chat(){
         Faker fake = new Faker();
         String text = fake.friends().quote();
 
-        Thread t1 = new Thread(() ->{
+        //Thread t1 = new Thread(() ->{
             Random rnd = new Random();
-            String userName = name[rnd.nextInt(name.length)];
-            try {
-                Thread.sleep(rnd.nextInt(100,500));
+            for (int i = 0; i < text.length(); i++) {
+                System.out.print(text.charAt(i));
+                try {
+                    Thread.sleep(rnd.nextInt(50,400));
+                }
+                catch (InterruptedException e){
+                    e.printStackTrace();
+                }
             }
-            catch (InterruptedException e){
-                e.printStackTrace();
-            }
-        });
+        try {
+            Thread.sleep(rnd.nextInt(500,4000));
+        }
+        catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+        //});t1.start();
     }
 }
