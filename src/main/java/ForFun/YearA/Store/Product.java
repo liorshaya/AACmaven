@@ -4,6 +4,7 @@ public class Product {
     private String name;
     private String category;
     private double price;
+    private int stocks;
 
     public Product(String name) {
         this.name = name;
@@ -11,6 +12,10 @@ public class Product {
 
     public String getName() {
         return name;
+    }
+
+    public int getStocks(){
+        return this.stocks;
     }
 
     public void setName(String name) {
