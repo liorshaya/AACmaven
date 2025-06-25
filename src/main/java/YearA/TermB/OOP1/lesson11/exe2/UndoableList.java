@@ -7,11 +7,14 @@ public class UndoableList<E>{
     private List<E> data;
     private List<Action<E>> history;
     private int maxUndos;
+    private int undosPerformed = 0;
+    ;
 
-    public UndoableList(){
+    public UndoableList(int maxUndos){
         this.data = new ArrayList<>();
         this.history = new ArrayList<>();
-        //this.maxUndos = maxUndos;
+        this.maxUndos = maxUndos;
+
     }
 
     public void add(E element){
@@ -25,28 +28,33 @@ public class UndoableList<E>{
     }
 
     public boolean undo(){
-        if(this.history.isEmpty()){
+        if(this.history.isEmpty() || undosPerformed >= this.maxUndos){
             return false;
         }
         else{
             Action<E> current = this.history.get(this.history.size() - 1);
             if(current.getType() == ActionType.ADD){
                 this.data.remove(this.data.size()-1);
+                System.out.println("The element " + current + " has removed");
             }
             else if(current.getType() == ActionType.REMOVE){
                 this.data.add(current.getElement());
+                System.out.println("The element " + current + " has re-added");
             }
             this.history.remove(current);
+            undosPerformed++;
             return true;
         }
+
     }
 
     public String toString(){
         return this.data.toString();
     }
 
-    public List<Action<E>> getHistory() {
-
-        return history;
+    public void commint(){
+        this.history.clear();
+        undosPerformed = 0;
     }
+
 }
