@@ -11,7 +11,7 @@ import static java.lang.Math.round;
 public class Main {
     public static void main(String[] args) {
         try {
-            File file = new File("/Users/shaya/Library/CloudStorage/OneDrive-Personal/intelliJ-Main/AACmaven/src/main/resources/Cake.jpg");
+            File file = new File("C:\\Users\\lior1\\OneDrive\\intelliJ-Main\\AACmaven\\src\\main\\resources\\Cake.jpg");
             if(file.exists()){
                 System.out.println("File exist");
                 BufferedImage myImage = ImageIO.read(file);
@@ -22,16 +22,18 @@ public class Main {
                     for (int j = 0; j < height; j++) {
                         int rgb = myImage.getRGB(i,j);
                         Color color = new Color(rgb);
-                        int red = round(color.getRed()*bright)>255? 255 : (int)round(color.getRed()*bright);
-                        int green = round(color.getGreen()*bright)> 255? 255 : (int)round(color.getGreen()*bright);
-                        int blue = round(color.getBlue()*bright)>255? 255 : (int)round(color.getBlue()*bright);
-                        Color color1 = new Color(red , green ,blue);
-                        myImage.setRGB(i,j,color1.getRGB());
+                        int th = 255/2;
+                        int avg = (color.getRed() + color.getGreen() + color.getBlue())/3;
+                        int red = avg > th? 255 : 0;
+                        int green = avg > th? 255 : 0;
+                        int blue = avg > th? 255 : 0;
+                        Color newColor = new Color(red,green,blue);
+                        myImage.setRGB(i,j,newColor.getRGB());
 
                     }
                 }
 
-                File output = new File("/Users/shaya/Library/CloudStorage/OneDrive-Personal/intelliJ-Main/AACmaven/src/main/resources/Cake1.jpg");
+                File output = new File("C:\\Users\\lior1\\OneDrive\\intelliJ-Main\\AACmaven\\src\\main\\resources\\Cake1.jpg");
                 ImageIO.write(myImage,"jpg",output);
 
             }else{
@@ -42,3 +44,8 @@ public class Main {
         }
     }
 }
+//                        int red = round(color.getRed()*bright)>255? 255 : (int)round(color.getRed()*bright);
+//                        int green = round(color.getGreen()*bright)> 255? 255 : (int)round(color.getGreen()*bright);
+//                        int blue = round(color.getBlue()*bright)>255? 255 : (int)round(color.getBlue()*bright);
+//                        Color color1 = new Color(red , green ,blue);
+//                        myImage.setRGB(i,j,color1.getRGB());
