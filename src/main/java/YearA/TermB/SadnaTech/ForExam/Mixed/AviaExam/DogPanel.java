@@ -8,6 +8,8 @@ import org.json.JSONObject;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URI;
@@ -18,6 +20,7 @@ public class DogPanel extends JPanel {
     public Color colorBright;
     public Color colorDark;
 
+
     public DogPanel(int x,int y, int w , int h){
         this.image = getMyDogPricture();
         this.colorBright = getBrightestColor(this.image);
@@ -25,6 +28,19 @@ public class DogPanel extends JPanel {
         repaint();
         this.setBounds(x,y,w,h);
         //this.setBackground(Color.RED);
+        JButton button = new JButton("CLICK HERE");
+        button.setBounds(Window.WIDTH/2-75 , Window.HEIGHT-200 , 150 , 75);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                image = getMyDogPricture();
+                colorBright = getBrightestColor(image);
+                colorDark = getDarkestColor(image);
+                repaint();
+            }
+        });
+        this.setLayout(null);
+        this.add(button);
     }
 
     public BufferedImage getMyDogPricture(){
