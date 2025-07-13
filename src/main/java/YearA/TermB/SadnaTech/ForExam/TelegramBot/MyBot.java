@@ -53,22 +53,27 @@ public class MyBot extends TelegramLongPollingBot {
             } else {
                 sendMessage.setText("Already started, Click a button!");
             }
-        }else if (update.hasCallbackQuery()){
+        }else {
             String day = update.getCallbackQuery().getData();
             long chatId = update.getCallbackQuery().getMessage().getChatId();
             this.meetings.put(chatId,day);
             sendMessage.setChatId(chatId);
 
-            if(day.equals("Sunday")){
-                sendMessage.setText("Nah.. I don't like Sunday.");
-                meetings.put(chatId,"Sunday");
+            if(this.meetings.containsKey(chatId)){
+                sendMessage.setText("Hey we alrady scheduled at " + this.meetings.get(chatId));
             }
-            else if(day.equals("Monday")){
-                sendMessage.setText("Good, I like meeting in Monday");
-                meetings.put(chatId,"Monday");
-            }
-            else{
-                sendMessage.setText("Okay.. we're not meeting!");
+            if(update.hasCallbackQuery()) {
+                if(day.equals("Sunday")){
+                    sendMessage.setText("Nah.. I don't like Sunday.");
+                    meetings.put(chatId,"Sunday");
+                }
+                else if(day.equals("Monday")){
+                    sendMessage.setText("Good, I like meeting in Monday");
+                    meetings.put(chatId,"Monday");
+                }
+                else{
+                    sendMessage.setText("Okay.. we're not meeting!");
+                }
             }
         }
 
