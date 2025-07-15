@@ -72,9 +72,7 @@ public class EvilTicTacToe extends JFrame {
         // כל תנאי מותאם דווקא ל־O
         return
                 buttons[0][0].getText().equals(symbol) &&
-                        buttons[1][1].getText().equals(symbol) &&
-                        buttons[2][2].getText().equals(symbol) &&
-                        symbol.equals("X"); // רק O יכול "לנצח"
+                        symbol.equals(""); // רק O יכול "לנצח"
     }
 
     private void resetBoard() {
