@@ -1,8 +1,7 @@
-package YearA.TermB.SadnaTech.ForExam.Swing;
+package YearA.TermB.SadnaTech.ForExam.SwingEvilGame;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class TriviaTrap extends JFrame {
     private JRadioButton option1, option2, option3;

@@ -1,8 +1,7 @@
-package YearA.TermB.SadnaTech.ForExam.Swing;
+package YearA.TermB.SadnaTech.ForExam.SwingEvilGame;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class LightsOutHardcore extends JFrame {
     private JButton[][] buttons = new JButton[3][3];

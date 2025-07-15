@@ -1,4 +1,4 @@
-package YearA.TermB.SadnaTech.ForExam.Swing;
+package YearA.TermB.SadnaTech.ForExam.SwingEvilGame;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,8 +1,7 @@
-package YearA.TermB.SadnaTech.ForExam.Swing;
+package YearA.TermB.SadnaTech.ForExam.SwingEvilGame;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class BuggyCounter extends JFrame {
     private int counter = 0;
