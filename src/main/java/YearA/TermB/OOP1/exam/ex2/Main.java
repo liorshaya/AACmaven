@@ -1,0 +1,4 @@
+package YearA.TermB.OOP1.exam.ex2;
+
+public class Main {
+}
