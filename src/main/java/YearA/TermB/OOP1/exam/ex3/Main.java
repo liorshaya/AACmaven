@@ -25,4 +25,10 @@ public class Main {
                 .sorted(Comparator.comparing(Map.Entry<Integer,Integer>::getValue).reversed()).
                 map(Map.Entry::getKey).limit(limit).toList();
     }
+
+    public Map<String,Integer> calculateActionsCountByDates(List<UserAction> actions){
+        return actions.stream().collect(Collectors.groupingBy(action-> action.getDate().substring(0,10),Collectors.summingInt(a-> 1)));
+    }
+
+    public int countSuccessfulDistinctUsersActions(List<UserAction> )
 }
