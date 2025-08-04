@@ -30,5 +30,5 @@ public class Main {
         return actions.stream().collect(Collectors.groupingBy(action-> action.getDate().substring(0,10),Collectors.summingInt(a-> 1)));
     }
 
-    public int countSuccessfulDistinctUsersActions(List<UserAction> )
+   // public int countSuccessfulDistinctUsersActions(List<UserAction> )
 }
